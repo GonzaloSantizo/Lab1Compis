@@ -34,6 +34,8 @@ def create_dfn_graph(states, acceptance_states, transitions, symbols, start_stat
 
     # Add transitions as edges
     for (source, symbol, target) in transitions:
+        if symbol == '𝜀': 
+            symbol = 'ε'   
         edge = pydotplus.Edge(state_nodes[str(source)], state_nodes[str(target)], label=symbol)
         dot.add_edge(edge)
 

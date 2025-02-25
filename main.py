@@ -111,9 +111,6 @@ def main():
         estado_inicialAFD = {str(estado_inicialTempo)}
         estados_aceptacionTempo = afd[4]
 
-        print("\nSimulador AFD (Subconjuntos): ")
-        simAFD.exec(alfabetoTempo, transicionesTempo, estado_inicialTempo, estados_aceptacionTempo, cadena)
-
         estadosAFD = set()
         for i in estadosTempo:
             estadosAFD.add(str(i))
@@ -134,9 +131,6 @@ def main():
             estados_aceptacionAFD.add(str(i))
 
         new_states, symbols, new_transitions, newStart_states, newFinal_states = dfa_min.exec(estadosAFD, alfabetoAFD, transicionesAFD, estado_inicialAFD, estados_aceptacionAFD, "pngs/dfa_graph_minimized_subconjuntos.png")
-
-        print("\nSimulador AFD (Minimizacion de Subconjuntos): ")
-        simAFD.exec(symbols, new_transitions, newStart_states, newFinal_states, cadena)
         
         stack, node_list, alfabeto = tree.exec(postfix_regex)
         estadoscon, alfabetocon, Dtran, estado_inicialcon, estado_finalcon = dfa_dir.exec(stack, node_list, alfabeto)
